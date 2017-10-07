@@ -1,4 +1,5 @@
 """Geometry utilities."""
+from functools import reduce
 # Bounding box
 def bbox(features):
   points = [s.point() for s in features]
@@ -32,5 +33,5 @@ def convex_hull(features):
     points = sorted([s.point() for s in features])
     l = reduce(_keep_left, points, [])
     u = reduce(_keep_left, reversed(points), [])
-    return l.extend(u[i] for i in xrange(1, len(u) - 1)) or l
+    return l.extend(u[i] for i in range(1, len(u) - 1)) or l
 
